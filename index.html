@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lista de Contatos - Teste</title>
+    <title>Lista de Contatos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -13,6 +13,12 @@
 <body onload="Read()" class="bg-dark text-white">
     <nav class="navbar bg-primary">
         <a href="#" class="navbar-brand text-white">Lista de Contatos</a>
+        <form action="" class="input-group col-3" id="search-form">
+            <input type="text" autocomplete="off" class="form-control" id="search" placeholder="Pesquisar" required />
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
     </nav>
     <br />
     <div class="container">
@@ -22,7 +28,11 @@
                     <h2>Adicionar Contato</h2>
                     <div class="form-group">
                         <label><i class="fa fa-user"></i> Nome</label>
-                        <input type="text" autocomplete="off" class="form-control" id="name" placeholder="Enter User" required />
+                        <input type="text" autocomplete="off" class="form-control" id="name" placeholder="Informe o nome" required />
+                        <label><i class="fa fa-at"></i> E-mail</label>
+                        <input type="email" autocomplete="off" class="form-control" id="email" placeholder="Informe o e-mail" required />
+                        <label><i class="fa fa-phone"></i> Telefone</label>
+                        <input type="tel" autocomplete="off" class="form-control" id="tel" placeholder="Informe o telefone" required />
                     </div>
                     <button type="submit" class="btn btn-primary">
                         <i class="fa fa-plus"></i> Cadastrar
