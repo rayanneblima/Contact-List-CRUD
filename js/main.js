@@ -4,6 +4,7 @@ var tel = "";
 var names = [];
 var names2 = "";
 var userTR = document.getElementById("nameTR");
+var userSearched = document.getElementById("userSearched");
 
 document.getElementById("form").addEventListener("submit", (e) => {
 	e.preventDefault();
@@ -106,4 +107,46 @@ function Delete(index) {
 	names5.splice(index,1);
 	localStorage.setItem("names", JSON.stringify(names5));
 	Read();
+}
+
+document.getElementById("search-form").addEventListener("submit", (e) => {
+	e.preventDefault();
+	var inputSearch = document.getElementById("search");
+	Search(inputSearch.value);
+	Clear(inputSearch);
+});
+
+function Search(text) {
+	let registros = JSON.parse(localStorage.getItem("names"));
+	let nomes = [];
+	for (let index = 0; index < registros.length; index++) {
+		userTR.style.display = "none";
+		nomes[index] = registros[index].nome;
+	}
+	for (let index = 0; index < nomes.length; index++) {
+		if(nomes[index].toUpperCase() == text.toUpperCase()) {
+			userSearched.innerHTML +=
+			`<div class="bg-dark border border-success text-white card mb-2">
+				<div class="card-body">
+					<p><i class="fa fa-user"> Nome: ${registros[index].nome}</i></p>
+					<p><i class="fa fa-at"> E-mail: ${registros[index].email}</i></p>
+					<p><i class="fa fa-phone"> Telefone: ${registros[index].telefone}</i></p>
+				</div>
+			</div>`;
+		}
+	}
+	
+}
+
+function Clear(inputSearch) {
+	inputSearch.addEventListener('keyup', function (event) {
+		if (event.keyCode === 8) {
+			let timePressed = 0;
+			if (timePressed >= inputSearch.value.length) {
+				userSearched.innerHTML = "";
+				userTR.style.display = "block";
+			}
+		}
+	});
+
 }
